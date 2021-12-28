@@ -13,13 +13,14 @@ struct MainGameView: View {
     @State var showSheet: Bool = false
     
     var body: some View {
-        ZStack {
+        ZStack(alignment: Alignment.top) {
             TurnsView(game: $game)
             
-            if(showSheet) {
-                SheetView(game: $game)
-            } else {
-                SheetPreviewView(showSheet: $showSheet)
+            SlideOverCard {
+                VStack {
+                    Spacer().frame(height: 40)
+                    SheetView(game: $game)
+                }
             }
         }.navigationBarTitle("")
             .navigationBarBackButtonHidden(true)

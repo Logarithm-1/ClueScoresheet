@@ -15,8 +15,10 @@ import SwiftUI
 //Sheet View
 
 struct ContentView: View {
+    @State var game: Game = Game()
     var body: some View {
-        NewGameView()
+        //NewGameView()
+        MainGameView(game: $game)
     }
 }
 
