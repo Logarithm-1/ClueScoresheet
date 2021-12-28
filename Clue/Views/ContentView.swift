@@ -15,26 +15,8 @@ import SwiftUI
 //Sheet View
 
 struct ContentView: View {
-    @State var game: Game = Game(numberOfPlayers: 3, playerNames: ["Me", "Player 1", "Player 2"])
-    
     var body: some View {
-        TabView {
-            NewGameView().tabItem {
-                Label("1", systemImage: "")
-            }
-            
-            SelectCardsView(game: $game).tabItem {
-                Label("2", systemImage: "")
-            }
-            
-            TurnsView(game: $game).tabItem {
-                Label("Turns", systemImage: "")
-            }
-            
-            SheetView(game: $game).tabItem {
-                Label("Sheet", systemImage: "")
-            }
-        }
+        NewGameView()
     }
 }
 

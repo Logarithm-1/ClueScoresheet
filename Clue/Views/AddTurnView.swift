@@ -242,6 +242,6 @@ struct SelectCardGaveView: View {
 
 struct AddTurnView_Previews: PreviewProvider {
     static var previews: some View {
-        AddTurnView(game: .constant(Game(numberOfPlayers: 3, playerNames: ["Me", "Player 1", "Player 2"])))
+        AddTurnView(game: .constant(Game()))
     }
 }

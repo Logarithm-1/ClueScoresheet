@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 struct Game {
     var suspects: [Card] = [Card(name: "Colonel Mustard", imageName: "colonelMusard"),
                             Card(name: "Professor Plum", imageName: "professorPlum"),
@@ -30,31 +31,14 @@ struct Game {
                             Card(name: "Study", imageName: "study")]
     var turns: [Turn] = [Turn]()
     
-    let numberOfPlayers: Int
+    var numberOfPlayers: Int {
+        return playerNames.count
+    }
     let user: Int = 0
-    let playerNames: [String]
+    var playerNames: [String]
     
-    init(numberOfPlayers: Int, playerNames: [String]) {
-        if(numberOfPlayers != playerNames.count) {
-            fatalError()
-        }
-        
-        self.numberOfPlayers = numberOfPlayers
-        self.playerNames = playerNames
-        
-        for i in numberOfPlayers...6 {
-            for suspect in suspects {
-                suspect.addToDontHave(player: i)
-            }
-            
-            for weapond in weaponds {
-                weapond.addToDontHave(player: i)
-            }
-            
-            for room in rooms {
-                room.addToDontHave(player: i)
-            }
-        }
+    init() {
+        self.playerNames = ["User", "Player 2", "Player 3"]
     }
     
     //MARK: - Getters
@@ -152,6 +136,7 @@ struct Game {
             }
         }
         
+        checkSheet()
         return true
     }
     

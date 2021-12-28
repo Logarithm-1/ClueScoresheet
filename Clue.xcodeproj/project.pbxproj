@@ -25,6 +25,7 @@
 		D1C1EA04277AA86800CC632B /* Turn.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C1EA03277AA86800CC632B /* Turn.swift */; };
 		D1C1EA06277AA87800CC632B /* CardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C1EA05277AA87800CC632B /* CardType.swift */; };
 		D1C1EA0A277AAEE200CC632B /* SelectCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C1EA09277AAEE200CC632B /* SelectCardsView.swift */; };
+		D1C1EA0C277AB7DF00CC632B /* MainGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C1EA0B277AB7DF00CC632B /* MainGameView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		D1C1EA03277AA86800CC632B /* Turn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Turn.swift; sourceTree = "<group>"; };
 		D1C1EA05277AA87800CC632B /* CardType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardType.swift; sourceTree = "<group>"; };
 		D1C1EA09277AAEE200CC632B /* SelectCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCardsView.swift; sourceTree = "<group>"; };
+		D1C1EA0B277AB7DF00CC632B /* MainGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGameView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 				D1C1E9F62778BD9300CC632B /* CardView.swift */,
 				D1C1E9C92778B67E00CC632B /* ContentView.swift */,
 				D1C1EA09277AAEE200CC632B /* SelectCardsView.swift */,
+				D1C1EA0B277AB7DF00CC632B /* MainGameView.swift */,
 				D1C1E9F82778BE0900CC632B /* NewGameView.swift */,
 				D1C1E9FA277901C600CC632B /* TurnView.swift */,
 				D1C1E9FC277A41CC00CC632B /* TurnsView.swift */,
@@ -318,6 +321,7 @@
 				D1C1EA01277AA78100CC632B /* Card.swift in Sources */,
 				D1C1EA04277AA86800CC632B /* Turn.swift in Sources */,
 				D1C1E9C82778B67E00CC632B /* ClueApp.swift in Sources */,
+				D1C1EA0C277AB7DF00CC632B /* MainGameView.swift in Sources */,
 				D1C1E9F92778BE0900CC632B /* NewGameView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -479,6 +483,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Clue/Preview Content\"";
+				DEVELOPMENT_TEAM = P3LTN76885;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -507,6 +512,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Clue/Preview Content\"";
+				DEVELOPMENT_TEAM = P3LTN76885;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

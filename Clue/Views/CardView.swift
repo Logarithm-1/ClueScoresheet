@@ -73,6 +73,6 @@ struct CardView: View {
 
 struct ItemView_Previews: PreviewProvider {
     static var previews: some View {
-        CardView(game: .constant(Game(numberOfPlayers: 3, playerNames: ["Me", "Aspen", "Dad"])), item: .constant(Card(name: "Mrs. White", imageName: "mrsWhite")))
+        CardView(game: .constant(Game()), item: .constant(Card(name: "Mrs. White", imageName: "mrsWhite")))
     }
 }

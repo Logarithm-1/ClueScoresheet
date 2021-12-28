@@ -25,6 +25,6 @@ struct TurnsView: View {
 
 struct TurnsView_Previews: PreviewProvider {
     static var previews: some View {
-        TurnsView(game: .constant(Game(numberOfPlayers: 3, playerNames: ["Me", "Player 1", "Player 2"])))
+        TurnsView(game: .constant(Game()))
     }
 }

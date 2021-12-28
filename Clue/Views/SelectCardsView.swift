@@ -33,7 +33,7 @@ struct SelectCardsView: View {
                                 Image(systemName: "circle")
                             }
                         }
-
+                        
                     }
                 }
             }
@@ -86,28 +86,28 @@ struct SelectCardsView: View {
                 }
             }
             
-            Button {
-                print("Button Pressed")
-                if(game.addInitalCards(ids: selectedCardIds)) {
-                    //All is good
-                } else {
-                    //Error when adding card -> Prompt
-                    print("Invalid selected id")
-                }
-            } label: {
+            NavigationLink(destination: MainGameView(game: $game)) {
                 HStack {
                     Spacer()
                     Text("Submit").bold()
                     Spacer()
                 }.foregroundColor(Color.white)
             }.listRowBackground(Color.blue)
-
+                .simultaneousGesture(TapGesture().onEnded{
+                    if(game.addInitalCards(ids: selectedCardIds)) {
+                        //All is good
+                    } else {
+                        //Error when adding card -> Prompt
+                        print("Invalid selected id")
+                    }
+                })
         }.listStyle(InsetGroupedListStyle())
+            .navigationBarTitle("Select Your Cards")
     }
 }
 
 struct SelectCards_Previews: PreviewProvider {
     static var previews: some View {
-        SelectCardsView(game: .constant(Game(numberOfPlayers: 3, playerNames: ["Logan", "Aspen", "Dad"])))
+        SelectCardsView(game: .constant(Game()))
     }
 }
