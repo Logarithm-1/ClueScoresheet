@@ -20,62 +20,60 @@ struct AddTurnView: View {
     @State var cardGave: CardType = .None
     
     var body: some View {
-        VStack {
+        HStack {
+            Text("Current Player:").bold()
+            SelectPlayerView(game: $game, player: $player)
+        }
+        
+        HStack {
+            Text("Asking:").bold()
+            SelectPlayerView(game: $game, player: $asking)
+        }
+        
+        HStack {
+            Text("Suspect:").bold()
+            SelectSuspectView(game: $game, id: $suspectID)
+        }
+        
+        HStack {
+            Text("Weapond:").bold()
+            SelectWeapondView(game: $game, id: $weapondID)
+        }
+        
+        HStack {
+            Text("Room:").bold()
+            SelectRoomView(game: $game, id: $roomID)
+        }
+        
+        //If current player is the user
+        if(player == game.user) {
             HStack {
-                Text("Current Player:").bold()
-                SelectPlayerView(game: $game, player: $player)
+                Text("Card Gave:").bold()
+                SelectCardGaveView(game: $game, card: $cardGave, suspectID: $suspectID, weapondID: $weapondID, roomID: $roomID)
             }
-            
+        } else {
             HStack {
-                Text("Asking:").bold()
-                SelectPlayerView(game: $game, player: $asking)
+                Toggle("Asking Gave Any Cards", isOn: $gaveAny)
             }
-            
-            HStack {
-                Text("Suspect:").bold()
-                SelectSuspectView(game: $game, id: $suspectID)
-            }
-            
-            HStack {
-                Text("Weapond:").bold()
-                SelectWeapondView(game: $game, id: $weapondID)
-            }
-            
-            HStack {
-                Text("Room:").bold()
-                SelectRoomView(game: $game, id: $roomID)
-            }
-            
-            //If current player is the user
-            if(player == game.user) {
-                HStack {
-                    Text("Card Gave:").bold()
-                    SelectCardGaveView(game: $game, card: $cardGave, suspectID: $suspectID, weapondID: $weapondID, roomID: $roomID)
-                }
-            } else {
-                HStack {
-                    Toggle("Asking Gave Any Cards", isOn: $gaveAny)
-                }
-            }
-            
-            Button(action: {
-                if(player != game.user) {
-                    if(gaveAny) {
-                        cardGave = .Unknown
-                    } else {
-                        cardGave = .None
-                    }
-                }
-                
-                if(game.addTurn(player: player, asking: asking, suspectID: suspectID, weapondID: weapondID, roomID: roomID, cardGave: cardGave)) {
-                    //Susecffully added turn
+        }
+        
+        Button(action: {
+            if(player != game.user) {
+                if(gaveAny) {
+                    cardGave = .Unknown
                 } else {
-                    //Promt
-                    print("Invalid Turn Parameters")
+                    cardGave = .None
                 }
-            }) {
-                Text("Add")
             }
+            
+            if(game.addTurn(player: player, asking: asking, suspectID: suspectID, weapondID: weapondID, roomID: roomID, cardGave: cardGave)) {
+                //Susecffully added turn
+            } else {
+                //Promt
+                print("Invalid Turn Parameters")
+            }
+        }) {
+            Text("Add")
         }
     }
 }

@@ -29,6 +29,7 @@
 		D1C1EA0E277AD37A00CC632B /* SlideOverCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C1EA0D277AD37A00CC632B /* SlideOverCard.swift */; };
 		D1C1EA10277AD5B100CC632B /* Handle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C1EA0F277AD5B100CC632B /* Handle.swift */; };
 		D1C1EA12277AD68C00CC632B /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C1EA11277AD68C00CC632B /* Color+Ext.swift */; };
+		D1C1EA14277ADFF600CC632B /* SheetHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C1EA13277ADFF600CC632B /* SheetHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		D1C1EA0D277AD37A00CC632B /* SlideOverCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideOverCard.swift; sourceTree = "<group>"; };
 		D1C1EA0F277AD5B100CC632B /* Handle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handle.swift; sourceTree = "<group>"; };
 		D1C1EA11277AD68C00CC632B /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
+		D1C1EA13277ADFF600CC632B /* SheetHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +171,7 @@
 				D1C1E9FA277901C600CC632B /* TurnView.swift */,
 				D1C1E9FC277A41CC00CC632B /* TurnsView.swift */,
 				D1C1E9FE277A42B800CC632B /* AddTurnView.swift */,
+				D1C1EA13277ADFF600CC632B /* SheetHeaderView.swift */,
 				D1C1E9F32778BD7200CC632B /* SheetView.swift */,
 				D1C1EA0D277AD37A00CC632B /* SlideOverCard.swift */,
 				D1C1EA11277AD68C00CC632B /* Color+Ext.swift */,
@@ -327,6 +330,7 @@
 				D1C1E9CA2778B67E00CC632B /* ContentView.swift in Sources */,
 				D1C1E9F42778BD7200CC632B /* SheetView.swift in Sources */,
 				D1C1EA06277AA87800CC632B /* CardType.swift in Sources */,
+				D1C1EA14277ADFF600CC632B /* SheetHeaderView.swift in Sources */,
 				D1C1E9F72778BD9300CC632B /* CardView.swift in Sources */,
 				D1C1E9FB277901C600CC632B /* TurnView.swift in Sources */,
 				D1C1EA01277AA78100CC632B /* Card.swift in Sources */,

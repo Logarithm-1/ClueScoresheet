@@ -32,13 +32,13 @@ enum DragState {
 
 enum CardPosition: CGFloat {
     case top = 100
-    case middle = 500
-    case bottom = 750
+    case middle = 422
+    case bottom = 730
 }
 
 struct SlideOverCard<Content: View>: View {
     @GestureState private var dragState = DragState.inactive
-    @State var position = CardPosition.middle
+    @State var position = CardPosition.bottom
     
     var content: () -> Content
     
@@ -49,7 +49,7 @@ struct SlideOverCard<Content: View>: View {
             }
             .onEnded(onDragEnded)
         
-        return Group {
+        return VStack {
             Handle()
             self.content()
         }
@@ -97,7 +97,8 @@ struct SlideOverCard_Previews: PreviewProvider {
     static var previews: some View {
         SlideOverCard {
             VStack {
-                Text("Hello")
+                Text("Hello World")
+                Spacer()
             }
         }
     }

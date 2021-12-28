@@ -18,7 +18,7 @@ struct MainGameView: View {
             
             SlideOverCard {
                 VStack {
-                    Spacer().frame(height: 40)
+                    SheetHeaderView(game: $game).frame(height: 70)
                     SheetView(game: $game)
                 }
             }
