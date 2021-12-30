@@ -12,12 +12,12 @@ struct TurnsView: View {
     
     var body: some View {
         List {
-            AddTurnView(game: $game)
+            Section(header: Text("Add Turn").font(.headline).foregroundColor(.primary)) {
+                AddTurnView(game: $game)
+            }
             
-            Section(header: Text("Previous Turns")) {
-                ForEach(game.turns.reversed()) { turn in
-                    TurnView(turn: turn)
-                }
+            ForEach(game.turns) { turn in
+                TurnView(game: $game, turnId: turn.id)
             }
         }
     }

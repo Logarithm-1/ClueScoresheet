@@ -42,6 +42,26 @@ struct Game {
     }
     
     //MARK: - Getters
+    func getTurn(uuid: UUID) -> Turn? {
+        for turn in turns {
+            if(turn.id == uuid) {
+                return turn
+            }
+        }
+        
+        return nil
+    }
+    
+    func getTurnNumber(uuid: UUID) -> Int {
+        for i in 0..<turns.count {
+            if(turns[i].id == uuid) {
+                return i+1
+            }
+        }
+        
+        return -1
+    }
+    
     func getCard(uuid: UUID?) -> Card? {
         if let suspect = getSuspect(uuid: uuid) {
             return suspect

@@ -168,14 +168,11 @@
 				D1C1EA09277AAEE200CC632B /* SelectCardsView.swift */,
 				D1C1EA0B277AB7DF00CC632B /* MainGameView.swift */,
 				D1C1E9F82778BE0900CC632B /* NewGameView.swift */,
-				D1C1E9FA277901C600CC632B /* TurnView.swift */,
-				D1C1E9FC277A41CC00CC632B /* TurnsView.swift */,
-				D1C1E9FE277A42B800CC632B /* AddTurnView.swift */,
+				D1C1EA15277D2D9400CC632B /* Turns */,
 				D1C1EA13277ADFF600CC632B /* SheetHeaderView.swift */,
 				D1C1E9F32778BD7200CC632B /* SheetView.swift */,
-				D1C1EA0D277AD37A00CC632B /* SlideOverCard.swift */,
+				D1C1EA16277D2DA200CC632B /* SlideOverCard */,
 				D1C1EA11277AD68C00CC632B /* Color+Ext.swift */,
-				D1C1EA0F277AD5B100CC632B /* Handle.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -189,6 +186,25 @@
 				D1C1EA03277AA86800CC632B /* Turn.swift */,
 			);
 			path = Game;
+			sourceTree = "<group>";
+		};
+		D1C1EA15277D2D9400CC632B /* Turns */ = {
+			isa = PBXGroup;
+			children = (
+				D1C1E9FC277A41CC00CC632B /* TurnsView.swift */,
+				D1C1E9FA277901C600CC632B /* TurnView.swift */,
+				D1C1E9FE277A42B800CC632B /* AddTurnView.swift */,
+			);
+			path = Turns;
+			sourceTree = "<group>";
+		};
+		D1C1EA16277D2DA200CC632B /* SlideOverCard */ = {
+			isa = PBXGroup;
+			children = (
+				D1C1EA0D277AD37A00CC632B /* SlideOverCard.swift */,
+				D1C1EA0F277AD5B100CC632B /* Handle.swift */,
+			);
+			path = SlideOverCard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

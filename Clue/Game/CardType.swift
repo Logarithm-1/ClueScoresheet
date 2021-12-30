@@ -6,7 +6,7 @@
 //
 
 import Foundation
-enum CardType {
+enum CardType: String {
     case Suspect
     case Weapond
     case Room

@@ -16,4 +16,19 @@ struct Turn: Identifiable {
     
     let asking: Int
     let cardGave: CardType
+    
+    func cardGaveToString() -> String {
+        switch cardGave {
+        case .Suspect:
+            return suspect.name
+        case .Weapond:
+            return weapond.name
+        case .Room:
+            return room.name
+        case .Unknown:
+            return "Unknown"
+        case .None:
+            return "None"
+        }
+    }
 }

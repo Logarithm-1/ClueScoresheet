@@ -41,6 +41,7 @@ struct NewGameView: View {
                     }).buttonStyle(RoundedRectangleButtonStyle())
                 }
             }.listStyle(InsetGroupedListStyle())
+                .navigationTitle("New Game")
         }
     }
 }
