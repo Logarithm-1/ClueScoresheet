@@ -165,12 +165,11 @@
 			children = (
 				D1C1E9F62778BD9300CC632B /* CardView.swift */,
 				D1C1E9C92778B67E00CC632B /* ContentView.swift */,
-				D1C1EA09277AAEE200CC632B /* SelectCardsView.swift */,
 				D1C1EA0B277AB7DF00CC632B /* MainGameView.swift */,
+				D1C1EA09277AAEE200CC632B /* SelectCardsView.swift */,
 				D1C1E9F82778BE0900CC632B /* NewGameView.swift */,
 				D1C1EA15277D2D9400CC632B /* Turns */,
-				D1C1EA13277ADFF600CC632B /* SheetHeaderView.swift */,
-				D1C1E9F32778BD7200CC632B /* SheetView.swift */,
+				D1C1EA17277D311500CC632B /* Sheet */,
 				D1C1EA16277D2DA200CC632B /* SlideOverCard */,
 				D1C1EA11277AD68C00CC632B /* Color+Ext.swift */,
 			);
@@ -205,6 +204,15 @@
 				D1C1EA0F277AD5B100CC632B /* Handle.swift */,
 			);
 			path = SlideOverCard;
+			sourceTree = "<group>";
+		};
+		D1C1EA17277D311500CC632B /* Sheet */ = {
+			isa = PBXGroup;
+			children = (
+				D1C1EA13277ADFF600CC632B /* SheetHeaderView.swift */,
+				D1C1E9F32778BD7200CC632B /* SheetView.swift */,
+			);
+			path = Sheet;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
