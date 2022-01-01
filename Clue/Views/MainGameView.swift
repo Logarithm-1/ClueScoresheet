@@ -10,8 +10,6 @@ import SwiftUI
 struct MainGameView: View {
     @EnvironmentObject var game: Game
     
-    @State var showSheet: Bool = false
-    
     var body: some View {
         
         ZStack {
@@ -19,8 +17,13 @@ struct MainGameView: View {
             
             SlideOverCard {
                 VStack {
-                    Spacer().frame(height: 50)
-                    SheetView().environmentObject(game)
+                    SheetHeaderView()
+                        .environmentObject(game)
+                        .frame(height: 50)
+                    SheetView()
+                        .environmentObject(game)
+                    Spacer()
+                        .frame(height: 200)
                 }
             }
             

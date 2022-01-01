@@ -21,14 +21,14 @@ struct SheetView: View {
             
             Section(header: Text("Weaponds").font(.headline).foregroundColor(.primary)) {
                 ForEach(game.weaponds) { card in
-                    Text(card.name)
+                    SheetCardView(cardID: card.id)
                         .listRowBackground(card.isInocent ? Color.green : card.isGuilty ? Color.red : nil)
                 }
             }
             
             Section(header: Text("Rooms").font(.headline).foregroundColor(.primary)) {
                 ForEach(game.rooms) { card in
-                    Text(card.name)
+                    SheetCardView(cardID: card.id)
                         .listRowBackground(card.isInocent ? Color.green : card.isGuilty ? Color.red : nil)
                 }
             }

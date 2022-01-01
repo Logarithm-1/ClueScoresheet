@@ -25,19 +25,31 @@ struct SheetCardView: View {
                     
                     Group {
                         if(card.isInocent) { //Someone owns the card
-                            Text(game.playerNames[card.have])
+                            Text(card.have < game.numberOfPlayers ? game.playerNames[card.have] : "Uknown")
                         } else if(card.isGuilty) { //No one owns the card
                             Text("GUILTY")
                         } else { //Unclear
-                            if(card.mightHave.count != 0) {
+                            if(game.getCardMightHave(uuid: cardID) != "") {
                                 Text("Might Have: ").bold() + Text(game.getCardMightHave(uuid: cardID))
                             }
                             
-                            if(card.dontHave.count != 0) {
+                            if(game.getCardDontHave(uuid: cardID) != "") {
                                 Text("Don't Have: ").bold() + Text(game.getCardDontHave(uuid: cardID))
                             }
                         }
                     }.foregroundColor(.secondary)
+                }
+                
+                Spacer()
+                
+                if(!card.isGuilty && !card.isInocent) {
+                    VStack {
+                        Text(String(format: "%.0f", card.probabilityGuilty*100)+"%")
+                            .bold()
+                        Text("Guility")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
                 }
                 
                 //Text % chance guilty (and or) % chance inocent

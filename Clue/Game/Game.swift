@@ -74,14 +74,28 @@ class Game: ObservableObject {
     let user: Int = 0
     @Published var playerNames: [String]
     
-    //var guiltySuspect: (suspect: Card, probability: Float) = (suspect: Card(name: "Invalid", imageName: "invalid"), probability: 1.0)
+    let minNumberOfPlayers: Int = 2
+    let maxNumberOfPlayers: Int = 6
     
-    //var guiltyWeapond: (weapond: Card, probability: Float) = (weapond: Card(name: "Invalid", imageName: "invalid"), probability: 1.0)
-    
-    //var guiltyRoom: (room: Card, probability: Float) = (room: Card(name: "Invalid", imageName: "invalid"), probability: 1.0)
+    @Published var mostGuiltySuspect: UUID = UUID()
+    @Published var mostGuiltyWeapond: UUID = UUID()
+    @Published var mostGuiltyRoom: UUID = UUID()
     
     init() {
         self.playerNames = ["User", "Player 2", "Player 3"]
+        
+        for i in 0..<cards.count {
+            var playerIds: [Int] = [Int]()
+            playerIds.append(user)
+            
+            for player in numberOfPlayers..<maxNumberOfPlayers {
+                playerIds.append(player)
+            }
+            
+            for player in playerIds {
+                cards[i].addToDontHave(player: player)
+            }
+        }
         //self.checkSheet()
     }
     
