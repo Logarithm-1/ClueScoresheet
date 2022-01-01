@@ -8,11 +8,29 @@
 import SwiftUI
 
 struct MainGameView: View {
-    @Binding var game: Game
+    @EnvironmentObject var game: Game
     
     @State var showSheet: Bool = false
     
     var body: some View {
+        
+        ZStack {
+            Text("Turns")
+            
+            SlideOverCard {
+                VStack {
+                    Spacer().frame(height: 50)
+                    SheetView().environmentObject(game)
+                }
+            }
+            
+        }
+        .listStyle(InsetGroupedListStyle())
+        .navigationBarBackButtonHidden(true)
+        .navigationBarTitle("Turns")
+        
+        
+        /*
         ZStack(alignment: Alignment.top) {
             TurnsView(game: $game)
             
@@ -24,10 +42,10 @@ struct MainGameView: View {
             }
         }.navigationBarTitle("")
             .navigationBarBackButtonHidden(true)
-            .navigationBarHidden(true)
+            .navigationBarHidden(true)*/
     }
 }
-
+/*
 struct SheetPreviewView: View {
     @Binding var showSheet: Bool
     
@@ -49,3 +67,4 @@ struct MainGame_Previews: PreviewProvider {
         MainGameView(game: .constant(Game()))
     }
 }
+*/

@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+/*
 struct SheetHeaderView: View {
     @Binding var game: Game
     
@@ -79,3 +79,4 @@ struct SheetHeaderView_Previews: PreviewProvider {
         SheetHeaderView(game: .constant(Game())).frame(height: 60)
     }
 }
+*/

@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+/*
 struct TurnsView: View {
     @Binding var game: Game
     
@@ -28,3 +28,4 @@ struct TurnsView_Previews: PreviewProvider {
         TurnsView(game: .constant(Game()))
     }
 }
+*/

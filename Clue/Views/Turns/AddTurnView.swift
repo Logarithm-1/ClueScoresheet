@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+/*
 struct AddTurnView: View {
     @Binding var game: Game
     
@@ -17,7 +17,7 @@ struct AddTurnView: View {
     @State var roomID: UUID?
     @State var gaveAny: Bool = false
     
-    @State var cardGave: CardType = .None
+    @State var cardGave: Game.CardType = .None
     
     var body: some View {
         HStack {
@@ -243,3 +243,4 @@ struct AddTurnView_Previews: PreviewProvider {
         AddTurnView(game: .constant(Game()))
     }
 }
+*/

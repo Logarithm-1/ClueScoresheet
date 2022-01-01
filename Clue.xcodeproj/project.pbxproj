@@ -16,20 +16,23 @@
 		D1C1E9E52778B68000CC632B /* ClueUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C1E9E42778B68000CC632B /* ClueUITestsLaunchTests.swift */; };
 		D1C1E9F22778B81B00CC632B /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C1E9F12778B81B00CC632B /* Game.swift */; };
 		D1C1E9F42778BD7200CC632B /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C1E9F32778BD7200CC632B /* SheetView.swift */; };
-		D1C1E9F72778BD9300CC632B /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C1E9F62778BD9300CC632B /* CardView.swift */; };
+		D1C1E9F72778BD9300CC632B /* SheetCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C1E9F62778BD9300CC632B /* SheetCardView.swift */; };
 		D1C1E9F92778BE0900CC632B /* NewGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C1E9F82778BE0900CC632B /* NewGameView.swift */; };
 		D1C1E9FB277901C600CC632B /* TurnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C1E9FA277901C600CC632B /* TurnView.swift */; };
 		D1C1E9FD277A41CC00CC632B /* TurnsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C1E9FC277A41CC00CC632B /* TurnsView.swift */; };
 		D1C1E9FF277A42B800CC632B /* AddTurnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C1E9FE277A42B800CC632B /* AddTurnView.swift */; };
-		D1C1EA01277AA78100CC632B /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C1EA00277AA78100CC632B /* Card.swift */; };
-		D1C1EA04277AA86800CC632B /* Turn.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C1EA03277AA86800CC632B /* Turn.swift */; };
-		D1C1EA06277AA87800CC632B /* CardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C1EA05277AA87800CC632B /* CardType.swift */; };
+		D1C1EA01277AA78100CC632B /* Game+Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C1EA00277AA78100CC632B /* Game+Card.swift */; };
+		D1C1EA04277AA86800CC632B /* Game+Turn.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C1EA03277AA86800CC632B /* Game+Turn.swift */; };
+		D1C1EA06277AA87800CC632B /* Game+CardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C1EA05277AA87800CC632B /* Game+CardType.swift */; };
 		D1C1EA0A277AAEE200CC632B /* SelectCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C1EA09277AAEE200CC632B /* SelectCardsView.swift */; };
 		D1C1EA0C277AB7DF00CC632B /* MainGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C1EA0B277AB7DF00CC632B /* MainGameView.swift */; };
 		D1C1EA0E277AD37A00CC632B /* SlideOverCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C1EA0D277AD37A00CC632B /* SlideOverCard.swift */; };
 		D1C1EA10277AD5B100CC632B /* Handle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C1EA0F277AD5B100CC632B /* Handle.swift */; };
 		D1C1EA12277AD68C00CC632B /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C1EA11277AD68C00CC632B /* Color+Ext.swift */; };
 		D1C1EA14277ADFF600CC632B /* SheetHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C1EA13277ADFF600CC632B /* SheetHeaderView.swift */; };
+		D1C1EA192780100000CC632B /* SheetContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C1EA182780100000CC632B /* SheetContextMenu.swift */; };
+		D1C1EA1B27801F7800CC632B /* SelectCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C1EA1A27801F7800CC632B /* SelectCardView.swift */; };
+		D1C1EA1E2780232300CC632B /* Game+Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C1EA1D2780232300CC632B /* Game+Errors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,20 +65,23 @@
 		D1C1E9E42778B68000CC632B /* ClueUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClueUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D1C1E9F12778B81B00CC632B /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		D1C1E9F32778BD7200CC632B /* SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
-		D1C1E9F62778BD9300CC632B /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		D1C1E9F62778BD9300CC632B /* SheetCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetCardView.swift; sourceTree = "<group>"; };
 		D1C1E9F82778BE0900CC632B /* NewGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameView.swift; sourceTree = "<group>"; };
 		D1C1E9FA277901C600CC632B /* TurnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnView.swift; sourceTree = "<group>"; };
 		D1C1E9FC277A41CC00CC632B /* TurnsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnsView.swift; sourceTree = "<group>"; };
 		D1C1E9FE277A42B800CC632B /* AddTurnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTurnView.swift; sourceTree = "<group>"; };
-		D1C1EA00277AA78100CC632B /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
-		D1C1EA03277AA86800CC632B /* Turn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Turn.swift; sourceTree = "<group>"; };
-		D1C1EA05277AA87800CC632B /* CardType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardType.swift; sourceTree = "<group>"; };
+		D1C1EA00277AA78100CC632B /* Game+Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Game+Card.swift"; sourceTree = "<group>"; };
+		D1C1EA03277AA86800CC632B /* Game+Turn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Game+Turn.swift"; sourceTree = "<group>"; };
+		D1C1EA05277AA87800CC632B /* Game+CardType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Game+CardType.swift"; sourceTree = "<group>"; };
 		D1C1EA09277AAEE200CC632B /* SelectCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCardsView.swift; sourceTree = "<group>"; };
 		D1C1EA0B277AB7DF00CC632B /* MainGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGameView.swift; sourceTree = "<group>"; };
 		D1C1EA0D277AD37A00CC632B /* SlideOverCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideOverCard.swift; sourceTree = "<group>"; };
 		D1C1EA0F277AD5B100CC632B /* Handle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handle.swift; sourceTree = "<group>"; };
 		D1C1EA11277AD68C00CC632B /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
 		D1C1EA13277ADFF600CC632B /* SheetHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetHeaderView.swift; sourceTree = "<group>"; };
+		D1C1EA182780100000CC632B /* SheetContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetContextMenu.swift; sourceTree = "<group>"; };
+		D1C1EA1A27801F7800CC632B /* SelectCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCardView.swift; sourceTree = "<group>"; };
+		D1C1EA1D2780232300CC632B /* Game+Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Game+Errors.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,11 +169,10 @@
 		D1C1E9F52778BD8800CC632B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D1C1E9F62778BD9300CC632B /* CardView.swift */,
 				D1C1E9C92778B67E00CC632B /* ContentView.swift */,
-				D1C1EA0B277AB7DF00CC632B /* MainGameView.swift */,
-				D1C1EA09277AAEE200CC632B /* SelectCardsView.swift */,
 				D1C1E9F82778BE0900CC632B /* NewGameView.swift */,
+				D1C1EA1C27801F7D00CC632B /* SelectCards */,
+				D1C1EA0B277AB7DF00CC632B /* MainGameView.swift */,
 				D1C1EA15277D2D9400CC632B /* Turns */,
 				D1C1EA17277D311500CC632B /* Sheet */,
 				D1C1EA16277D2DA200CC632B /* SlideOverCard */,
@@ -179,10 +184,11 @@
 		D1C1EA02277AA86200CC632B /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				D1C1EA00277AA78100CC632B /* Card.swift */,
-				D1C1EA05277AA87800CC632B /* CardType.swift */,
 				D1C1E9F12778B81B00CC632B /* Game.swift */,
-				D1C1EA03277AA86800CC632B /* Turn.swift */,
+				D1C1EA1D2780232300CC632B /* Game+Errors.swift */,
+				D1C1EA05277AA87800CC632B /* Game+CardType.swift */,
+				D1C1EA00277AA78100CC632B /* Game+Card.swift */,
+				D1C1EA03277AA86800CC632B /* Game+Turn.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -209,10 +215,21 @@
 		D1C1EA17277D311500CC632B /* Sheet */ = {
 			isa = PBXGroup;
 			children = (
-				D1C1EA13277ADFF600CC632B /* SheetHeaderView.swift */,
 				D1C1E9F32778BD7200CC632B /* SheetView.swift */,
+				D1C1E9F62778BD9300CC632B /* SheetCardView.swift */,
+				D1C1EA13277ADFF600CC632B /* SheetHeaderView.swift */,
+				D1C1EA182780100000CC632B /* SheetContextMenu.swift */,
 			);
 			path = Sheet;
+			sourceTree = "<group>";
+		};
+		D1C1EA1C27801F7D00CC632B /* SelectCards */ = {
+			isa = PBXGroup;
+			children = (
+				D1C1EA09277AAEE200CC632B /* SelectCardsView.swift */,
+				D1C1EA1A27801F7800CC632B /* SelectCardView.swift */,
+			);
+			path = SelectCards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -348,18 +365,21 @@
 				D1C1EA0A277AAEE200CC632B /* SelectCardsView.swift in Sources */,
 				D1C1E9F22778B81B00CC632B /* Game.swift in Sources */,
 				D1C1E9FF277A42B800CC632B /* AddTurnView.swift in Sources */,
+				D1C1EA192780100000CC632B /* SheetContextMenu.swift in Sources */,
 				D1C1EA10277AD5B100CC632B /* Handle.swift in Sources */,
 				D1C1EA12277AD68C00CC632B /* Color+Ext.swift in Sources */,
 				D1C1E9FD277A41CC00CC632B /* TurnsView.swift in Sources */,
 				D1C1E9CA2778B67E00CC632B /* ContentView.swift in Sources */,
+				D1C1EA1E2780232300CC632B /* Game+Errors.swift in Sources */,
 				D1C1E9F42778BD7200CC632B /* SheetView.swift in Sources */,
-				D1C1EA06277AA87800CC632B /* CardType.swift in Sources */,
+				D1C1EA06277AA87800CC632B /* Game+CardType.swift in Sources */,
 				D1C1EA14277ADFF600CC632B /* SheetHeaderView.swift in Sources */,
-				D1C1E9F72778BD9300CC632B /* CardView.swift in Sources */,
+				D1C1E9F72778BD9300CC632B /* SheetCardView.swift in Sources */,
 				D1C1E9FB277901C600CC632B /* TurnView.swift in Sources */,
-				D1C1EA01277AA78100CC632B /* Card.swift in Sources */,
-				D1C1EA04277AA86800CC632B /* Turn.swift in Sources */,
+				D1C1EA01277AA78100CC632B /* Game+Card.swift in Sources */,
+				D1C1EA04277AA86800CC632B /* Game+Turn.swift in Sources */,
 				D1C1E9C82778B67E00CC632B /* ClueApp.swift in Sources */,
+				D1C1EA1B27801F7800CC632B /* SelectCardView.swift in Sources */,
 				D1C1EA0C277AB7DF00CC632B /* MainGameView.swift in Sources */,
 				D1C1E9F92778BE0900CC632B /* NewGameView.swift in Sources */,
 				D1C1EA0E277AD37A00CC632B /* SlideOverCard.swift in Sources */,

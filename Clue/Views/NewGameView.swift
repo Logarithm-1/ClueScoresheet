@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NewGameView: View {
-    @State var game: Game = Game()
+    @StateObject var game: Game = Game()
     
     let maxNumberOfPlayers: Int = 6
     let minNumberOfPlayers: Int = 2
@@ -16,7 +16,7 @@ struct NewGameView: View {
     var body: some View {
         NavigationView {
             List {
-                Stepper("\(game.numberOfPlayers) Players") {
+                Stepper("\(game.playerNames.count) Players") {
                     if(game.numberOfPlayers < maxNumberOfPlayers) {
                         game.playerNames.append("Player \(game.numberOfPlayers + 1)")
                     }
@@ -30,32 +30,16 @@ struct NewGameView: View {
                     NewGamePlayerNamesView(names: $game.playerNames)
                 }
                 
-                NavigationLink(destination: SelectCardsView(game: $game)) {
-                    Button(action: {
-                    }, label: {
-                        HStack {
-                            Spacer()
-                            Text("Submit").bold().foregroundColor(Color.white)
-                            Spacer()
-                        }
-                    }).buttonStyle(RoundedRectangleButtonStyle())
-                }
+                NavigationLink(destination: SelectCardsView().environmentObject(game)) {
+                    HStack {
+                        Spacer()
+                        Text("Submit").bold().foregroundColor(Color.white)
+                        Spacer()
+                    }
+                }.listRowBackground(Color.blue)
             }.listStyle(InsetGroupedListStyle())
                 .navigationTitle("New Game")
         }
-    }
-}
-
-struct RoundedRectangleButtonStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        HStack {
-            Spacer()
-            configuration.label.foregroundColor(.black)
-            Spacer()
-        }
-        .padding()
-        .background(Color.blue.cornerRadius(8))
-        .scaleEffect(configuration.isPressed ? 0.95 : 1)
     }
 }
 

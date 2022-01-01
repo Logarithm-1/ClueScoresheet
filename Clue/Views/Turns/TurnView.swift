@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+/*
 struct TurnView: View {
     @Binding var game: Game
     @State var turnId: UUID
@@ -34,3 +34,4 @@ struct TurnView_Previews: PreviewProvider {
         TurnView(game: .constant(Game()), turnId: UUID())
     }
 }
+*/

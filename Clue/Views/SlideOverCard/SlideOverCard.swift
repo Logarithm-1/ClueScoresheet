@@ -38,7 +38,7 @@ enum CardPosition: CGFloat {
 
 struct SlideOverCard<Content: View>: View {
     @GestureState private var dragState = DragState.inactive
-    @State var position = CardPosition.bottom
+    @State var position = CardPosition.top
     
     var content: () -> Content
     
