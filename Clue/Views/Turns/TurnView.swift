@@ -6,14 +6,17 @@
 //
 
 import SwiftUI
-/*
+
 struct TurnView: View {
-    @Binding var game: Game
+    @EnvironmentObject var game: Game
     @State var turnId: UUID
     
     let errorMessage: String = "Invalid Turn ID"
     
     var body: some View {
+        Text("Turn")
+        
+        /*
         if(game.getTurn(uuid: turnId) == nil) {
             Text(errorMessage)
         } else {
@@ -25,13 +28,12 @@ struct TurnView: View {
                 Text("Room: ").bold() + Text("\(game.getTurn(uuid: turnId)?.room.name ?? errorMessage)")
                 Text("Gave Card: ").bold() + Text("\(game.getTurn(uuid: turnId)?.cardGaveToString() ?? errorMessage)")
             }
-        }
+        }*/
     }
 }
 
 struct TurnView_Previews: PreviewProvider {
     static var previews: some View {
-        TurnView(game: .constant(Game()), turnId: UUID())
+        TurnView(turnId: UUID())
     }
 }
-*/

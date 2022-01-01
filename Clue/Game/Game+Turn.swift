@@ -35,10 +35,24 @@ extension Game {
     }
     
     //MARK: - Getters
+    func getTurnNumber(uuid: UUID) -> Int {
+        for i in 0..<turns.count {
+            if(turns[i].id == uuid) {
+                return i+1
+            }
+        }
+        
+        return -1
+    }
     
     //MARK: - Setters
     
     //MARK: - Adders
+    func addTurn(player: Int, asking: Int, suspectID: UUID?, weapondID: UUID?, roomID: UUID?, cardGave: CardType) throws {
+        
+        
+    }
+    
     /*
     func addTurn(player: Int, asking: Int, suspectID: UUID?, weapondID: UUID?, roomID: UUID?, cardGave: CardType) -> Bool {
         if(player == asking || player >= numberOfPlayers || player < 0 || asking >= numberOfPlayers || player < 0) {

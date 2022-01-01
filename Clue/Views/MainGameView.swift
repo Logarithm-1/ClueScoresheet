@@ -13,24 +13,21 @@ struct MainGameView: View {
     var body: some View {
         
         ZStack {
-            Text("Turns")
+            TurnsView()
             
             SlideOverCard {
                 VStack {
                     SheetHeaderView()
-                        .environmentObject(game)
                         .frame(height: 50)
                     SheetView()
-                        .environmentObject(game)
                     Spacer()
                         .frame(height: 200)
                 }
             }
-            
         }
         .listStyle(InsetGroupedListStyle())
         .navigationBarBackButtonHidden(true)
-        .navigationBarTitle("Turns")
+        .navigationBarHidden(true)
         
         
         /*

@@ -6,18 +6,18 @@
 //
 
 import SwiftUI
-/*
+
 struct TurnsView: View {
-    @Binding var game: Game
+    @EnvironmentObject var game: Game
     
     var body: some View {
         List {
             Section(header: Text("Add Turn").font(.headline).foregroundColor(.primary)) {
-                AddTurnView(game: $game)
+                AddTurnView()
             }
             
             ForEach(game.turns) { turn in
-                TurnView(game: $game, turnId: turn.id)
+                TurnView(turnId: turn.id)
             }
         }
     }
@@ -25,7 +25,6 @@ struct TurnsView: View {
 
 struct TurnsView_Previews: PreviewProvider {
     static var previews: some View {
-        TurnsView(game: .constant(Game()))
+        TurnsView()
     }
 }
-*/

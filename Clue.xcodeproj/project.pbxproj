@@ -35,6 +35,9 @@
 		D1C1EA1E2780232300CC632B /* Game+Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C1EA1D2780232300CC632B /* Game+Errors.swift */; };
 		D1C1EA212780565500CC632B /* CirclarProgrossBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C1EA202780565500CC632B /* CirclarProgrossBar.swift */; };
 		D1C1EA23278056DB00CC632B /* SheetHeaderImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C1EA22278056DB00CC632B /* SheetHeaderImageView.swift */; };
+		D1C1EA252780602800CC632B /* SelectPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C1EA242780602800CC632B /* SelectPlayerView.swift */; };
+		D1C1EA272780639E00CC632B /* SelectACardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C1EA262780639E00CC632B /* SelectACardView.swift */; };
+		D1C1EA29278065BE00CC632B /* SelectCardGaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C1EA28278065BE00CC632B /* SelectCardGaveView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +89,9 @@
 		D1C1EA1D2780232300CC632B /* Game+Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Game+Errors.swift"; sourceTree = "<group>"; };
 		D1C1EA202780565500CC632B /* CirclarProgrossBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CirclarProgrossBar.swift; sourceTree = "<group>"; };
 		D1C1EA22278056DB00CC632B /* SheetHeaderImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetHeaderImageView.swift; sourceTree = "<group>"; };
+		D1C1EA242780602800CC632B /* SelectPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlayerView.swift; sourceTree = "<group>"; };
+		D1C1EA262780639E00CC632B /* SelectACardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectACardView.swift; sourceTree = "<group>"; };
+		D1C1EA28278065BE00CC632B /* SelectCardGaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCardGaveView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +210,9 @@
 				D1C1E9FC277A41CC00CC632B /* TurnsView.swift */,
 				D1C1E9FA277901C600CC632B /* TurnView.swift */,
 				D1C1E9FE277A42B800CC632B /* AddTurnView.swift */,
+				D1C1EA242780602800CC632B /* SelectPlayerView.swift */,
+				D1C1EA262780639E00CC632B /* SelectACardView.swift */,
+				D1C1EA28278065BE00CC632B /* SelectCardGaveView.swift */,
 			);
 			path = Turns;
 			sourceTree = "<group>";
@@ -376,6 +385,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1C1EA29278065BE00CC632B /* SelectCardGaveView.swift in Sources */,
 				D1C1EA0A277AAEE200CC632B /* SelectCardsView.swift in Sources */,
 				D1C1E9F22778B81B00CC632B /* Game.swift in Sources */,
 				D1C1E9FF277A42B800CC632B /* AddTurnView.swift in Sources */,
@@ -387,12 +397,14 @@
 				D1C1EA23278056DB00CC632B /* SheetHeaderImageView.swift in Sources */,
 				D1C1EA1E2780232300CC632B /* Game+Errors.swift in Sources */,
 				D1C1E9F42778BD7200CC632B /* SheetView.swift in Sources */,
+				D1C1EA272780639E00CC632B /* SelectACardView.swift in Sources */,
 				D1C1EA06277AA87800CC632B /* Game+CardType.swift in Sources */,
 				D1C1EA14277ADFF600CC632B /* SheetHeaderView.swift in Sources */,
 				D1C1E9F72778BD9300CC632B /* SheetCardView.swift in Sources */,
 				D1C1E9FB277901C600CC632B /* TurnView.swift in Sources */,
 				D1C1EA01277AA78100CC632B /* Game+Card.swift in Sources */,
 				D1C1EA04277AA86800CC632B /* Game+Turn.swift in Sources */,
+				D1C1EA252780602800CC632B /* SelectPlayerView.swift in Sources */,
 				D1C1E9C82778B67E00CC632B /* ClueApp.swift in Sources */,
 				D1C1EA1B27801F7800CC632B /* SelectCardView.swift in Sources */,
 				D1C1EA0C277AB7DF00CC632B /* MainGameView.swift in Sources */,

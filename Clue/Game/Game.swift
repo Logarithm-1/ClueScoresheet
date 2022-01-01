@@ -99,6 +99,15 @@ class Game: ObservableObject {
         //self.checkSheet()
     }
     
+    //MARK: - Validate
+    func validPlayer(num: Int) -> Bool {
+        if(num >= 0 && num < numberOfPlayers) {
+            return true
+        }
+        
+        return false
+    }
+    
     //MARK: - Getters
     func getTurn(uuid: UUID) -> Turn? {
         for turn in turns {
@@ -109,163 +118,4 @@ class Game: ObservableObject {
         
         return nil
     }
-    
-    func getTurnNumber(uuid: UUID) -> Int {
-        for i in 0..<turns.count {
-            if(turns[i].id == uuid) {
-                return i+1
-            }
-        }
-        
-        return -1
-    }
-    /*
-    //MARK: - Adders
-    
-    func checkSheet() {
-        
-        
-        var counter = suspects.count
-        for suspect in suspects {
-            if(suspect.isInocent) {
-                counter -= 1
-            }
-        }
-        
-        if(counter == 1) {
-            for suspect in suspects {
-                if(!suspect.isInocent) {
-                    suspect.dontHave = [0, 1, 2, 3, 4, 5]
-                }
-            }
-        }
-        
-        counter = weaponds.count
-        for weapond in weaponds {
-            if(weapond.isInocent) {
-                counter -= 1
-            }
-        }
-        
-        if(counter == 1) {
-            for weapond in weaponds {
-                if(!weapond.isInocent) {
-                    weapond.dontHave = [0, 1, 2, 3, 4, 5]
-                }
-            }
-        }
-        
-        counter = rooms.count
-        for room in rooms {
-            if(room.isInocent) {
-                counter -= 1
-            }
-        }
-        
-        if(counter == 1) {
-            for room in rooms {
-                if(!room.isInocent) {
-                    room.dontHave = [0, 1, 2, 3, 4, 5]
-                }
-            }
-        }
-        
-        //Recaculate Proabilities
-        calculateSuspectProbabilities()
-        calculateWeapondProbabilities()
-        calculateRoomProbabilities()
-    }
-    
-    func calculateSuspectProbabilities() {
-        var numberOfSuspects: Int = suspects.count
-        
-        for suspect in suspects {
-            if(suspect.isGuilty) {
-                self.guiltySuspect = (suspect: suspect, probability: 1.0)
-                return
-            } else if(suspect.isInocent) {
-                numberOfSuspects -= 1
-            }
-        }
-        
-        var maxProbability: Float = 0.0
-        var maxIndex: Int = 0
-        
-        for i in 0..<suspects.count {
-            if(!suspects[i].isInocent) {
-                let probability: Float = 1 / Float(numberOfSuspects)
-                if(probability > maxProbability) {
-                    maxProbability = probability
-                    maxIndex = i
-                }
-            }
-        }
-        
-        self.guiltySuspect = (suspect: suspects[maxIndex], probability: maxProbability)
-    }
-    
-    func calculateWeapondProbabilities() {
-        var numberOfWeaponds: Int = suspects.count
-        
-        for weapond in weaponds {
-            if(weapond.isGuilty) {
-                self.guiltyWeapond = (weapond: weapond, probability: 1.0)
-                return
-            } else if(weapond.isInocent) {
-                numberOfWeaponds -= 1
-            }
-        }
-        
-        var maxProbability: Float = 0.0
-        var maxIndex: Int = 0
-        
-        for i in 0..<weaponds.count {
-            if(!weaponds[i].isInocent) {
-                let probability: Float = 1 / Float(numberOfWeaponds)
-                if(probability > maxProbability) {
-                    maxProbability = probability
-                    maxIndex = i
-                }
-            }
-        }
-        
-        self.guiltyWeapond = (weapond: weaponds[maxIndex], probability: maxProbability)
-    }
-    
-    func calculateRoomProbabilities() {
-        var numberOfRooms: Int = suspects.count
-        
-        for room in rooms {
-            if(room.isGuilty) {
-                self.guiltyRoom = (room: room, probability: 1.0)
-                return
-            } else if(room.isInocent) {
-                numberOfRooms -= 1
-            }
-        }
-        
-        var maxProbability: Float = 0.0
-        var maxIndex: Int = 0
-        
-        for i in 0..<rooms.count {
-            if(!rooms[i].isInocent) {
-                let probability: Float = 1 / Float(numberOfRooms)
-                if(probability > maxProbability) {
-                    maxProbability = probability
-                    maxIndex = i
-                }
-            }
-        }
-        
-        self.guiltyRoom = (room: rooms[maxIndex], probability: maxProbability)
-    }
-    
-    //MARK: - Valid
-    func validPlayer(_ index: Int) -> Bool {
-        if(index >= 0 && index < numberOfPlayers) {
-            return true
-        }
-        
-        return false
-    }*/
 }
