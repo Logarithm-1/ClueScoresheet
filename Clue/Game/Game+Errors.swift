@@ -12,4 +12,17 @@ extension Game {
         case invalidUUID
     }
     
+    enum TurnError : Error {
+        case playerAskingEqual
+        case invalidPlayer
+        case invalidAsking
+        case invalidSuspect
+        case invalidWeapond
+        case invalidRoom
+        case userKnownsCard
+    }
+    
+    enum GameError : Error {
+        case someoneCheated
+    }
 }

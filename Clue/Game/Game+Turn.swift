@@ -35,6 +35,16 @@ extension Game {
     }
     
     //MARK: - Getters
+    func getTurn(uuid: UUID) -> Turn? {
+        for turn in turns {
+            if(turn.id == uuid) {
+                return turn
+            }
+        }
+        
+        return nil
+    }
+    
     func getTurnNumber(uuid: UUID) -> Int {
         for i in 0..<turns.count {
             if(turns[i].id == uuid) {
@@ -49,79 +59,114 @@ extension Game {
     
     //MARK: - Adders
     func addTurn(player: Int, asking: Int, suspectID: UUID?, weapondID: UUID?, roomID: UUID?, cardGave: CardType) throws {
-        
-        
-    }
-    
-    /*
-    func addTurn(player: Int, asking: Int, suspectID: UUID?, weapondID: UUID?, roomID: UUID?, cardGave: CardType) -> Bool {
-        if(player == asking || player >= numberOfPlayers || player < 0 || asking >= numberOfPlayers || player < 0) {
-            print("Invalid Player or Asking")
-            return false
+        //Check Paremters
+        if(player == asking) {
+            throw TurnError.playerAskingEqual
         }
         
-        if let suspect = getSuspect(uuid: suspectID),
-           let weapond = getWeapond(uuid: weapondID),
-           let room = getRoom(uuid: roomID) {
-            let newTurn = Turn(player: player, suspect: suspect, weapond: weapond, room: room, asking: asking, cardGave: cardGave)
-            turns.append(newTurn)
+        if(player < 0 || player >= numberOfPlayers) {
+            throw TurnError.invalidPlayer
+        }
+        
+        if(asking < 0 || asking >= numberOfPlayers) {
+            throw TurnError.invalidAsking
+        }
+        
+        if(player == user && cardGave == .Unknown) {
+            throw TurnError.userKnownsCard
+        }
+        
+        guard let suspect = getCard(uuid: suspectID) else {
+            throw TurnError.invalidSuspect
+        }
+        
+        if(suspect.cardType != .Suspect) {
+            throw TurnError.invalidSuspect
+        }
+        
+        guard let weapond = getCard(uuid: weapondID) else {
+            throw TurnError.invalidWeapond
+        }
+        
+        if(weapond.cardType != .Weapond) {
+            throw TurnError.invalidWeapond
+        }
+        
+        guard let room = getCard(uuid: roomID) else {
+            throw TurnError.invalidRoom
+        }
+        
+        if(room.cardType != .Room) {
+            throw TurnError.invalidRoom
+        }
+        
+        //Turn Logic
+        switch cardGave {
+        case .Suspect:
+            try setCardHave(to: asking, for: suspectID)
+        case .Weapond:
+            try setCardHave(to: asking, for: weapondID)
+        case .Room:
+            try setCardHave(to: asking, for: roomID)
+        case .None:
+            try addCardDontHave(player: asking, for: suspectID)
+            try addCardDontHave(player: asking, for: weapondID)
+            try addCardDontHave(player: asking, for: roomID)
+        case .Unknown: //Gave card but not sure which one
+            //Cards asked that we someone else (not asking) has or we know is guility
+            var knownCards: Int = 0
             
-            switch cardGave {
-            case .Suspect:
-                suspect.setHave(to: asking)
-            case .Weapond:
-                weapond.setHave(to: asking)
-            case .Room:
-                room.setHave(to: asking)
-            case .None:
-                suspect.addToDontHave(player: asking)
-                weapond.addToDontHave(player: asking)
-                room.addToDontHave(player: asking)
-            case .Unknown:
-                var counter: Int = 3
+            if((suspect.isInocent && suspect.have != asking) || suspect.isGuilty) {
+                knownCards += 1
+            }
+            if((weapond.isInocent && weapond.have != asking) || weapond.isGuilty) {
+                knownCards += 1
+            }
+            if((room.isInocent && room.have != asking) || room.isGuilty) {
+                knownCards += 1
+            }
+            
+            if(knownCards == 3) {
                 
-                if((suspect.isInocent && suspect.have != asking) || suspect.isGuilty) {
-                    counter -= 1
-                }
-                if((weapond.isInocent && weapond.have != asking) || weapond.isGuilty) {
-                    counter -= 1
-                }
-                if((room.isInocent && room.have != asking) || room.isGuilty) {
-                    counter -= 1
-                }
+            }
+            
+            if(knownCards == 3) {
+                //If they gave the card even though we already know that (based on previous turns) that they should not have have one. The most likly outcome is someone cheated (someone gave no cards but they actully had one)
                 
-                if(counter <= 0) {//If Counter is 0, then someone cheated
-                    print("I think someone cheated")
-                } else if(counter == 1) { //If counter is 1, then we can deduce that `asking` the card that `asking` gave
-                    if(!(suspect.isInocent || suspect.isGuilty)) {
-                        suspect.setHave(to: asking)
-                    }
-                    if(!(weapond.isInocent || weapond.isGuilty)) {
-                        weapond.setHave(to: asking)
-                    }
-                    if(!(room.isInocent || room.isGuilty)) {
-                        room.setHave(to: asking)
-                    }
-                } else {//If counter is greater then 2, then we add that `asking` might have
-                    if(!(suspect.isInocent || suspect.isGuilty)) {
-                        suspect.addToMightHave(player: asking)
-                    }
-                    if(!(weapond.isInocent || weapond.isGuilty)) {
-                        weapond.addToMightHave(player: asking)
-                    }
-                    if(!(room.isInocent || room.isGuilty)) {
-                        room.addToMightHave(player: asking)
-                    }
+                //We are still going to add turn, but we want to notify user that someone cheated so we are going to throw an error as well
+                //Add Turn
+                let newTurn = Turn(player: player, suspect: suspect, weapond: weapond, room: room, asking: asking, cardGave: cardGave)
+                turns.append(newTurn)
+                throw GameError.someoneCheated
+            } else if(knownCards == 2) {
+                //If know that 2/3 cards belong to someone else / are guilty, we can conclude that the remaing card must be the card that asking gave.
+                if(!(suspect.isInocent || suspect.isGuilty)) {
+                    try setCardHave(to: asking, for: suspectID)
+                }
+                if(!(weapond.isInocent || weapond.isGuilty)) {
+                    try setCardHave(to: asking, for: weapondID)
+                }
+                if(!(room.isInocent || room.isGuilty)) {
+                    try setCardHave(to: asking, for: roomID)
+                }
+            } else {
+                //If we only know 1/3 of the cards or none at all then we cannot conclude anythign
+                if(!(suspect.isInocent || suspect.isGuilty)) {
+                    try addCardMightHave(player: asking, for: suspectID)
+                }
+                if(!(weapond.isInocent || weapond.isGuilty)) {
+                    try addCardMightHave(player: asking, for: weapondID)
+                }
+                if(!(room.isInocent || room.isGuilty)) {
+                    try addCardMightHave(player: asking, for: roomID)
                 }
             }
-              
-            checkSheet()
-            return true
         }
         
-        print("Invalid Item UUID")
-        return false
+        //Add Turn
+        let newTurn = Turn(player: player, suspect: suspect, weapond: weapond, room: room, asking: asking, cardGave: cardGave)
+        turns.append(newTurn)
+        recalculateCards()
     }
-     */
     
 }

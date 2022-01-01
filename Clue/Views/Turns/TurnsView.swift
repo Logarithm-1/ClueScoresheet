@@ -17,7 +17,7 @@ struct TurnsView: View {
             }
             
             ForEach(game.turns) { turn in
-                TurnView(turnId: turn.id)
+                TurnView(turnID: turn.id)
             }
         }
     }

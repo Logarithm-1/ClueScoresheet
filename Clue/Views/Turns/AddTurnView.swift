@@ -42,8 +42,7 @@ struct AddTurnView: View {
             do {
                 try game.addTurn(player: player, asking: asking, suspectID: suspectID, weapondID: weapondID, roomID: roomID, cardGave: cardGave)
             } catch {
-                //TODO: Prompt
-                print("Unable to add turn")
+                print(error)
             }
         } label: {
             HStack {

@@ -9,31 +9,28 @@ import SwiftUI
 
 struct TurnView: View {
     @EnvironmentObject var game: Game
-    @State var turnId: UUID
+    @State var turnID: UUID
     
     let errorMessage: String = "Invalid Turn ID"
     
     var body: some View {
-        Text("Turn")
-        
-        /*
-        if(game.getTurn(uuid: turnId) == nil) {
-            Text(errorMessage)
-        } else {
-            Section(header: Text("Turn \(game.getTurnNumber(uuid: turnId))").font(.headline).foregroundColor(.primary)) {
-                Text("Turn Player: ").bold() + Text("\(game.playerNames[game.getTurn(uuid: turnId)?.player ?? 0])")
-                Text("Asked Player: ").bold() + Text("\(game.playerNames[game.getTurn(uuid: turnId)?.asking ?? 0])")
-                Text("Suspect: ").bold() + Text("\(game.getTurn(uuid: turnId)?.suspect.name ?? errorMessage)")
-                Text("Weapond: ").bold() + Text("\(game.getTurn(uuid: turnId)?.weapond.name ?? errorMessage)")
-                Text("Room: ").bold() + Text("\(game.getTurn(uuid: turnId)?.room.name ?? errorMessage)")
-                Text("Gave Card: ").bold() + Text("\(game.getTurn(uuid: turnId)?.cardGaveToString() ?? errorMessage)")
+        if let turn = game.getTurn(uuid: turnID) {
+            Section(header: Text("Turn \(game.getTurnNumber(uuid: turnID))")) {
+                Text("Turn Player: ").bold() + Text(game.playerNames[turn.player])
+                Text("Asked Player: ").bold() + Text(game.playerNames[turn.asking])
+                Text("Suspect: ").bold() + Text(turn.suspect.name)
+                Text("Weapond: ").bold() + Text(turn.weapond.name)
+                Text("Room: ").bold() + Text(turn.room.name)
+                Text("Card Gave: ").bold() + Text(turn.cardGaveToString())
             }
-        }*/
+        } else {
+            Text(errorMessage)
+        }
     }
 }
 
 struct TurnView_Previews: PreviewProvider {
     static var previews: some View {
-        TurnView(turnId: UUID())
+        TurnView(turnID: UUID())
     }
 }

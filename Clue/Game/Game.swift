@@ -66,7 +66,7 @@ class Game: ObservableObject {
         return rooms
     }
     
-    var turns: [Turn] = [Turn]()
+    @Published var turns: [Turn] = [Turn]()
     
     var numberOfPlayers: Int {
         return playerNames.count
@@ -106,16 +106,5 @@ class Game: ObservableObject {
         }
         
         return false
-    }
-    
-    //MARK: - Getters
-    func getTurn(uuid: UUID) -> Turn? {
-        for turn in turns {
-            if(turn.id == uuid) {
-                return turn
-            }
-        }
-        
-        return nil
     }
 }
