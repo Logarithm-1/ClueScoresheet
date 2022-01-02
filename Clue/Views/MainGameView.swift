@@ -11,19 +11,19 @@ struct MainGameView: View {
     @EnvironmentObject var game: Game
     
     var body: some View {
-        
-        ZStack {
+        SlideOverCard {
             TurnsView()
-            
-            SlideOverCard {
-                SheetHeaderView()
-            } content: {
-                SheetView()
-            }
+        } header: {
+            SheetHeaderView()
+        } content: {
+            SheetView()
         }
-        .listStyle(InsetGroupedListStyle())
         .navigationBarBackButtonHidden(true)
-        .navigationBarHidden(true)
+        //.navigationBarHidden(true)
+        .navigationTitle("Turns")
+        .toolbar {
+            Text("New Game")
+        }
     }
 }
 

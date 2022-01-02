@@ -36,37 +36,42 @@ enum CardPosition: CGFloat {
     case bottom = 730
 }
 
-struct SlideOverCard<Content: View, Header: View>: View {
+struct SlideOverCard<Backgroud: View, Content: View, Header: View>: View {
     @Environment(\.colorScheme) var colorScheme
     @GestureState private var dragState = DragState.inactive
     @State var position = CardPosition.middle
     
+    var background: () -> Backgroud
     var header: () -> Header
     var content: () -> Content
     
-    
     var body: some View {
+        
         let drag = DragGesture()
             .updating($dragState) { drag, state, transaction in
                 state = .dragging(translation: drag.translation)
             }
             .onEnded(onDragEnded)
         
-        return VStack {
-            Handle()
-            self.header()
-                .frame(height: UIScreen.main.bounds.height - CardPosition.bottom.rawValue - 40)
-            Divider()
-            self.content()
-            Spacer().frame(height: self.position.rawValue + self.dragState.translation.height)
+        return ZStack {
+            self.background()
+            
+            VStack {
+                Handle()
+                self.header()
+                    .frame(height: UIScreen.main.bounds.height - CardPosition.bottom.rawValue - 40)
+                Divider()
+                self.content()
+                Spacer().frame(height: self.position.rawValue + self.dragState.translation.height)
+            }
+            .frame(height: UIScreen.main.bounds.height)
+            .background(.ultraThinMaterial) //colorScheme == .light ? Color.white :
+            .cornerRadius(10)
+            .shadow(color: .shadow, radius: 10)
+            .offset(y: self.position.rawValue + self.dragState.translation.height)
+            .animation(.interpolatingSpring(stiffness: 300, damping: 30, initialVelocity: 10), value: dragState.isDragging)
+            .gesture(drag)
         }
-        .frame(height: UIScreen.main.bounds.height)
-        .background(.ultraThinMaterial) //colorScheme == .light ? Color.white :
-        .cornerRadius(10)
-        .shadow(color: .shadow, radius: 10)
-        .offset(y: self.position.rawValue + self.dragState.translation.height)
-        .animation(.interpolatingSpring(stiffness: 300, damping: 30, initialVelocity: 10), value: dragState.isDragging)
-        .gesture(drag)
     }
     
     private func onDragEnded(drag: DragGesture.Value) {
@@ -103,9 +108,11 @@ struct SlideOverCard<Content: View, Header: View>: View {
 struct SlideOverCard_Previews: PreviewProvider {
     static var previews: some View {
         SlideOverCard {
+            Text("Background")
+        } header: {
             Text("Header")
         } content: {
-            Text("Hello World")
+            Text("Card")
         }
     }
 }

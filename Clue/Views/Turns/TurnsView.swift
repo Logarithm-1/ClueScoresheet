@@ -19,7 +19,7 @@ struct TurnsView: View {
             ForEach(game.turns.reversed()) { turn in
                 TurnView(turnID: turn.id)
             }
-        }
+        }.listStyle(InsetGroupedListStyle())
     }
 }
 

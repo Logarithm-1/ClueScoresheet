@@ -7,6 +7,16 @@
 
 import Foundation
 
+//TODO: Better Probability Calculations
+//TODO: Best cards to ask player
+//TODO: Add gussing to turns
+//TODO: Add end game button
+//TODO: Add Different view for iPad
+//TODO: Turn rotation
+//TODO: Add Saving so can return to game, even if the app closes/crashes'
+//TODO: New Game, Change Player name optimation
+//TODO: Optimaze SlideOverView to be asscible through differnt applicatoins
+
 class Game: ObservableObject {
     @Published var cards: [Card] = [Card(name: "Colonel Mustard", imageName: "colonelMusard", cardType: .Suspect),
                          Card(name: "Professor Plum", imageName: "professorPlum", cardType: .Suspect),
