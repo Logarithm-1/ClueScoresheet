@@ -167,6 +167,7 @@ extension Game {
     }
     
     //MARK: - Adders
+    /// - Throws: ``Game.CardError``
     func addInitialCards(ids: [UUID]) throws {
         for id in ids {
             try setCardHave(to: user, for: id)
@@ -175,6 +176,7 @@ extension Game {
         recalculateCards()
     }
     
+    /// - Throws: ``Game.CardError``
     func addCardMightHave(player: Int, for uuid: UUID?) throws {
         let cardIndex = getCardIndex(uuid: uuid)
         
@@ -187,6 +189,7 @@ extension Game {
         recalculateCards()
     }
     
+    /// - Throws: ``Game.CardError``
     func addCardDontHave(player: Int, for uuid: UUID?) throws {
         let cardIndex = getCardIndex(uuid: uuid)
         

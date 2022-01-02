@@ -7,6 +7,8 @@
 
 import Foundation
 
+//TODO: Add prompts for errors
+
 extension Game {
     enum CardError : Error {
         case invalidUUID

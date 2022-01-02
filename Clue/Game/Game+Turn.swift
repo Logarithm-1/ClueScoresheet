@@ -58,6 +58,7 @@ extension Game {
     //MARK: - Setters
     
     //MARK: - Adders
+    /// - Throws: ``Game.TurnError``, ``Game.CardError``, and ``Game.GameError``
     func addTurn(player: Int, asking: Int, suspectID: UUID?, weapondID: UUID?, roomID: UUID?, cardGave: CardType) throws {
         //Check Paremters
         if(player == asking) {
@@ -124,10 +125,6 @@ extension Game {
             }
             if((room.isInocent && room.have != asking) || room.isGuilty) {
                 knownCards += 1
-            }
-            
-            if(knownCards == 3) {
-                
             }
             
             if(knownCards == 3) {

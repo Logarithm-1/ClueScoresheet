@@ -28,43 +28,11 @@ struct MainGameView: View {
         .listStyle(InsetGroupedListStyle())
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(true)
-        
-        
-        /*
-        ZStack(alignment: Alignment.top) {
-            TurnsView(game: $game)
-            
-            SlideOverCard {
-                VStack {
-                    SheetHeaderView(game: $game).frame(height: 70)
-                    SheetView(game: $game)
-                }
-            }
-        }.navigationBarTitle("")
-            .navigationBarBackButtonHidden(true)
-            .navigationBarHidden(true)*/
-    }
-}
-/*
-struct SheetPreviewView: View {
-    @Binding var showSheet: Bool
-    
-    var body: some View {
-        HStack {
-            Spacer()
-            Button {
-                showSheet.toggle()
-            } label: {
-                Text("Show Sheet")
-            }
-
-        }
     }
 }
 
 struct MainGame_Previews: PreviewProvider {
     static var previews: some View {
-        MainGameView(game: .constant(Game()))
+        MainGameView()
     }
 }
-*/

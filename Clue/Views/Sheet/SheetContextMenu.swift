@@ -11,6 +11,9 @@ struct SheetContextMenu: View {
     @EnvironmentObject var game: Game
     var cardID: UUID
     
+    @State var alertMessage: String = "Sorry. Something went wrong."
+    @State var showingAlert: Bool = false
+    
     var body: some View {
         ForEach(0..<game.numberOfPlayers) { player in
             Section {
@@ -18,10 +21,14 @@ struct SheetContextMenu: View {
                 
                 Button {
                     do {
+                        throw Game.CardError.invalidUUID
                         try game.setCardHave(to: player, for: cardID)
+                    } catch Game.CardError.invalidUUID {
+                        alertMessage = "Sorry there is trouble editing card information. Please check data and try again."
+                        showingAlert = true
                     } catch {
-                        //TODO: Prompt
-                        print("Can not set card to have player")
+                        alertMessage = "Sorry. Something went wrong. \(error)"
+                        showingAlert = true
                     }
                 } label: {
                     Text("Have")
@@ -31,9 +38,12 @@ struct SheetContextMenu: View {
                     Button {
                         do {
                             try game.addCardMightHave(player: player, for: cardID)
+                        } catch Game.CardError.invalidUUID {
+                            alertMessage = "Sorry there is trouble editing card information. Please check data and try again."
+                            showingAlert = true
                         } catch {
-                            //TODO: Prompt
-                            print("Can not set card to might have player")
+                            alertMessage = "Sorry. Something went wrong. \(error)"
+                            showingAlert = true
                         }
                     } label: {
                         Text("Might Have")
@@ -43,13 +53,18 @@ struct SheetContextMenu: View {
                 Button {
                     do {
                         try game.addCardDontHave(player: player, for: cardID)
+                    } catch Game.CardError.invalidUUID {
+                        alertMessage = "Sorry there is trouble editing card information. Please check data and try again."
+                        showingAlert = true
                     } catch {
-                        //TODO: Prompt
-                        print("Can not set card to dont have player")
+                        alertMessage = "Sorry. Something went wrong. \(error)"
+                        showingAlert = true
                     }
                 } label: {
                     Text("Don't Have")
                 }
+            }.alert(alertMessage, isPresented: $showingAlert) {
+                Button("OK", role: .cancel) {}
             }
         }
     }
