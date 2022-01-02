@@ -16,13 +16,9 @@ struct MainGameView: View {
             TurnsView()
             
             SlideOverCard {
-                VStack {
-                    SheetHeaderView()
-                        .frame(height: 50)
-                    SheetView()
-                    Spacer()
-                        .frame(height: 200)
-                }
+                SheetHeaderView()
+            } content: {
+                SheetView()
             }
         }
         .listStyle(InsetGroupedListStyle())

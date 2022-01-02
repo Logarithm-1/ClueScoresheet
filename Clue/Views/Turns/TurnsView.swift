@@ -16,7 +16,7 @@ struct TurnsView: View {
                 AddTurnView()
             }
             
-            ForEach(game.turns) { turn in
+            ForEach(game.turns.reversed()) { turn in
                 TurnView(turnID: turn.id)
             }
         }

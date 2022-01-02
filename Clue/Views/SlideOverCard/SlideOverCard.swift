@@ -36,11 +36,14 @@ enum CardPosition: CGFloat {
     case bottom = 730
 }
 
-struct SlideOverCard<Content: View>: View {
+struct SlideOverCard<Content: View, Header: View>: View {
+    @Environment(\.colorScheme) var colorScheme
     @GestureState private var dragState = DragState.inactive
-    @State var position = CardPosition.top
+    @State var position = CardPosition.middle
     
+    var header: () -> Header
     var content: () -> Content
+    
     
     var body: some View {
         let drag = DragGesture()
@@ -51,10 +54,14 @@ struct SlideOverCard<Content: View>: View {
         
         return VStack {
             Handle()
+            self.header()
+                .frame(height: UIScreen.main.bounds.height - CardPosition.bottom.rawValue - 40)
+            Divider()
             self.content()
+            Spacer().frame(height: self.position.rawValue + self.dragState.translation.height)
         }
         .frame(height: UIScreen.main.bounds.height)
-        .background(Color.white)
+        .background(.ultraThinMaterial) //colorScheme == .light ? Color.white :
         .cornerRadius(10)
         .shadow(color: .shadow, radius: 10)
         .offset(y: self.position.rawValue + self.dragState.translation.height)
@@ -96,10 +103,9 @@ struct SlideOverCard<Content: View>: View {
 struct SlideOverCard_Previews: PreviewProvider {
     static var previews: some View {
         SlideOverCard {
-            VStack {
-                Text("Hello World")
-                Spacer()
-            }
+            Text("Header")
+        } content: {
+            Text("Hello World")
         }
     }
 }

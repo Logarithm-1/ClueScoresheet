@@ -21,7 +21,6 @@ struct SheetContextMenu: View {
                 
                 Button {
                     do {
-                        throw Game.CardError.invalidUUID
                         try game.setCardHave(to: player, for: cardID)
                     } catch Game.CardError.invalidUUID {
                         alertMessage = "Sorry there is trouble editing card information. Please check data and try again."

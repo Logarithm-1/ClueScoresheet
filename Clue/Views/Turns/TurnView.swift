@@ -15,7 +15,7 @@ struct TurnView: View {
     
     var body: some View {
         if let turn = game.getTurn(uuid: turnID) {
-            Section(header: Text("Turn \(game.getTurnNumber(uuid: turnID))")) {
+            Section(header: Text("Turn \(game.getTurnNumber(uuid: turnID))").font(.headline).foregroundColor(.primary)) {
                 Text("Turn Player: ").bold() + Text(game.playerNames[turn.player])
                 Text("Asked Player: ").bold() + Text(game.playerNames[turn.asking])
                 Text("Suspect: ").bold() + Text(turn.suspect.name)

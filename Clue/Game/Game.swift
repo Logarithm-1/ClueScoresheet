@@ -91,12 +91,7 @@ class Game: ObservableObject {
             for player in numberOfPlayers..<maxNumberOfPlayers {
                 playerIds.append(player)
             }
-            
-            for player in playerIds {
-                cards[i].addToDontHave(player: player)
-            }
         }
-        //self.checkSheet()
     }
     
     //MARK: - Validate

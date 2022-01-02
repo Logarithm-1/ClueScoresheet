@@ -15,7 +15,7 @@ struct SheetHeaderImageView: View {
         ZStack {
             if let card = game.getCard(uuid: cardID) {
                 CirclarProgrossBar(progress: 1)
-                    .stroke(Color.midnightBlue, lineWidth: 5)
+                    .stroke(Color.darkBlue, lineWidth: 5)
                 CirclarProgrossBar(progress: CGFloat(card.probabilityGuilty))
                     .stroke(card.isGuilty ? Color.green : Color.blue, lineWidth: 5)
                 Group {

@@ -21,6 +21,6 @@ struct SheetHeaderView: View {
 
 struct SheetHeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        SheetHeaderView().frame(height: 60)
+        SheetHeaderView().environmentObject(Game()).frame(height: 60)
     }
 }

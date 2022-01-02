@@ -8,28 +8,37 @@
 import SwiftUI
 
 struct SheetView: View {
+    @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var game: Game
+    
+    var colorInocent: Color {
+        return colorScheme == .light ? Color.green : Color.darkGreen
+    }
+    
+    var colorGuilty: Color {
+        return colorScheme == .light ? Color.red : Color.darkRed
+    }
     
     var body: some View {
         List {
             Section(header: Text("Suspects").font(.headline).foregroundColor(.primary)) {
                 ForEach(game.suspects) { card in
                     SheetCardView(cardID: card.id)
-                        .listRowBackground(card.isInocent ? Color.green : card.isGuilty ? Color.red : nil)
+                        .listRowBackground(card.isInocent ? colorInocent : card.isGuilty ? colorGuilty : nil)
                 }
             }
             
             Section(header: Text("Weaponds").font(.headline).foregroundColor(.primary)) {
                 ForEach(game.weaponds) { card in
                     SheetCardView(cardID: card.id)
-                        .listRowBackground(card.isInocent ? Color.green : card.isGuilty ? Color.red : nil)
+                        .listRowBackground(card.isInocent ? colorInocent : card.isGuilty ? colorGuilty : nil)
                 }
             }
             
             Section(header: Text("Rooms").font(.headline).foregroundColor(.primary)) {
                 ForEach(game.rooms) { card in
                     SheetCardView(cardID: card.id)
-                        .listRowBackground(card.isInocent ? Color.green : card.isGuilty ? Color.red : nil)
+                        .listRowBackground(card.isInocent ? colorInocent : card.isGuilty ? colorGuilty : nil)
                 }
             }
         }
