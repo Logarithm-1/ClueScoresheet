@@ -36,7 +36,7 @@ enum CardPosition {
     func offsetFromTop() -> CGFloat {
         switch self {
         case .bottom:
-            return UIScreen.main.bounds.height - 80
+            return UIScreen.main.bounds.height - 100
         case .middle:
             return UIScreen.main.bounds.height/2
         case .top:
@@ -69,24 +69,33 @@ struct SlideOverCard<Backgroud: View, Content: View, Header: View>: View {
             }
             .onEnded(onDragEnded)
         
-        return ZStack(alignment: .top) {
-            self.background()
-            
-            VStack(alignment: .center) {
-                Handle()
-                self.header()
-                    .frame(height: 60)
-                Divider()
-                self.content()
-                Spacer().frame(height: max(0, self.position.offsetFromTop() + self.dragState.translation.height))
+        return GeometryReader { geometry in
+            ZStack(alignment: .top) {
+                self.background()
+                
+                VStack(alignment: .center) {
+                    Handle()
+                    self.header()
+                        .frame(height: 60)
+                        .padding(.bottom, position == .bottom ? 20 : 10)
+                    Divider()
+                    self.content()
+                    Spacer().frame(height: getYOffset(from: geometry.frame(in: .global)))
+                }
+                .background(Material.ultraThinMaterial)
+                .cornerRadius(20)
+                .shadow(color: .shadow, radius: 10)
+                .offset(y: getYOffset(from: geometry.frame(in: .global)))
+                .animation(animation, value: dragState.isDragging)
+                .gesture(drag)
             }
-            .background(.ultraThinMaterial)
-            .cornerRadius(20)
-            .shadow(color: .shadow, radius: 10)
-            .offset(y: max(0, self.position.offsetFromTop() + self.dragState.translation.height))
-            .animation(animation, value: dragState.isDragging)
-            .gesture(drag)
         }
+    }
+    
+    private func getYOffset(from frame: CGRect) -> CGFloat {
+        var offset = position.offsetFromTop()
+        offset -= frame.minY //Subtracting the top position of parent view such that it should always stay the same bottom position relative to the screen
+        return max(0, offset + self.dragState.translation.height) //Offset should be between 0 and the screen height, such that it will aways be on the fram
     }
     
     private func onDragEnded(drag: DragGesture.Value) {
