@@ -56,8 +56,8 @@ struct SlideOverCard<Backgroud: View, Content: View, Header: View>: View {
     }
     
     var background: () -> Backgroud
-    var header: () -> Header
     var content: () -> Content
+    var header: () -> Header
     
     var body: some View {
         let drag = DragGesture()
@@ -132,10 +132,10 @@ struct SlideOverCard_Previews: PreviewProvider {
     static var previews: some View {
         SlideOverCard {
             Text("Background")
-        } header: {
-            Text("Header")
         } content: {
             Text("Card")
+        } header: {
+            Text("Header")
         }
     }
 }

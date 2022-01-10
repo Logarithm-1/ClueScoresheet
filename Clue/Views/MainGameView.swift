@@ -13,13 +13,13 @@ struct MainGameView: View {
     var body: some View {
         SlideOverCard {
             TurnsView()
-        } header: {
-            SheetHeaderView()
         } content: {
             SheetView()
+        } header: {
+            SheetHeaderView()
         }
         .navigationBarBackButtonHidden(true)
-        //.navigationBarHidden(true)
+        .navigationBarHidden(true)
         .navigationTitle("Turns")
         .toolbar {
             Text("New Game")
