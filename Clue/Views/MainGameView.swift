@@ -19,8 +19,8 @@ struct MainGameView: View {
             SheetView()
         }
         .navigationBarBackButtonHidden(true)
-        //.navigationBarHidden(true)
-        .navigationTitle("Turns")
+        .navigationBarHidden(true)
+        //.navigationTitle("Turns")
         .toolbar {
             Text("New Game")
         }

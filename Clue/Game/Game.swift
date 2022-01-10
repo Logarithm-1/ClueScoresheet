@@ -12,7 +12,6 @@ import Foundation
 //TODO: Add gussing to turns
 //TODO: Add end game button
 //TODO: Add Different view for iPad
-//TODO: Turn rotation
 //TODO: Add Saving so can return to game, even if the app closes/crashes'
 //TODO: New Game, Change Player name optimation
 //TODO: Optimaze SlideOverView to be asscible through differnt applicatoins

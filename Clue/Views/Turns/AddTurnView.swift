@@ -35,6 +35,7 @@ struct AddTurnView: View {
         }
         
         Button {
+            let tempCardGave: Game.CardType = cardGave
             if(player != game.user && gaveAny) {
                 cardGave = .Unknown
             } else if(player != game.user) {
@@ -43,6 +44,15 @@ struct AddTurnView: View {
             
             do {
                 try game.addTurn(player: player, asking: asking, suspectID: suspectID, weapondID: weapondID, roomID: roomID, cardGave: cardGave)
+                //Turn Rotation
+                player += 1
+                player %= game.numberOfPlayers
+                asking = -1
+                suspectID = nil
+                weapondID = nil
+                roomID = nil
+                cardGave = .Unknown
+                return
             } catch Game.CardError.invalidUUID {
                 alertMessage = "Sorry there is trouble editing card information. Please check data and try again."
                 showingAlert = true
@@ -74,6 +84,11 @@ struct AddTurnView: View {
                 alertMessage = "Sorry. Something went wrong. \(error)"
                 showingAlert = true
             }
+            
+            if(cardGave != tempCardGave) {
+                cardGave = tempCardGave
+            }
+            
         } label: {
             HStack {
                 Spacer()
