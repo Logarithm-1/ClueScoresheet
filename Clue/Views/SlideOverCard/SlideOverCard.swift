@@ -30,58 +30,79 @@ enum DragState {
     }
 }
 
-enum CardPosition: CGFloat {
-    case top = 100
-    case middle = 422
-    case bottom = 730
+enum CardPosition {
+    case top, middle, bottom
+    
+    func offsetFromTop() -> CGFloat {
+        switch self {
+        case .bottom:
+            return UIScreen.main.bounds.height - 80
+        case .middle:
+            return UIScreen.main.bounds.height/2
+        case .top:
+            return 80
+        }
+    }
 }
 
 struct SlideOverCard<Backgroud: View, Content: View, Header: View>: View {
     @Environment(\.colorScheme) var colorScheme
     @GestureState private var dragState = DragState.inactive
     @State var position = CardPosition.middle
+    @State var offset: CGSize = CGSize.zero
+    
+    var animation: Animation {
+        Animation.interpolatingSpring(stiffness: 300.0, damping: 30.0, initialVelocity: 10.0)
+    }
     
     var background: () -> Backgroud
     var header: () -> Header
     var content: () -> Content
     
     var body: some View {
-        
         let drag = DragGesture()
             .updating($dragState) { drag, state, transaction in
                 state = .dragging(translation: drag.translation)
             }
+            .onChanged { _ in
+                offset = .zero
+            }
             .onEnded(onDragEnded)
         
-        return ZStack {
+        return ZStack(alignment: .top) {
             self.background()
             
-            VStack {
+            VStack(alignment: .center) {
                 Handle()
                 self.header()
-                    .frame(height: UIScreen.main.bounds.height - CardPosition.bottom.rawValue - 40)
+                    .frame(height: 60)
                 Divider()
                 self.content()
-                Spacer().frame(height: self.position.rawValue + self.dragState.translation.height)
+                Spacer().frame(height: max(0, self.position.offsetFromTop() + self.dragState.translation.height))
             }
-            .frame(height: UIScreen.main.bounds.height)
             .background(.ultraThinMaterial)
-            .cornerRadius(10)
+            .cornerRadius(20)
             .shadow(color: .shadow, radius: 10)
-            .offset(y: self.position.rawValue + self.dragState.translation.height)
-            .animation(.interpolatingSpring(stiffness: 300, damping: 30, initialVelocity: 10), value: dragState.isDragging)
+            .offset(y: max(0, self.position.offsetFromTop() + self.dragState.translation.height))
+            .animation(animation, value: dragState.isDragging)
             .gesture(drag)
         }
     }
     
     private func onDragEnded(drag: DragGesture.Value) {
+        // Determining the direction of the drag gesture and its distance from the top
         let verticalDirection = drag.predictedEndLocation.y - drag.location.y
-        let cardTopEdgeLocation = self.position.rawValue + drag.translation.height
+        let offsetFromTopView = position.offsetFromTop() + drag.translation.height
+        
+        // Setting stops
         let positionAbove: CardPosition
         let positionBelow: CardPosition
+        
+        // Nearest position for card to snap to.
         let closestPosition: CardPosition
         
-        if(cardTopEdgeLocation <= CardPosition.middle.rawValue) {
+        // Determining wheather card is above or below
+        if(offsetFromTopView <= CardPosition.middle.offsetFromTop()) {
             positionAbove = .top
             positionBelow = .middle
         } else {
@@ -89,12 +110,14 @@ struct SlideOverCard<Backgroud: View, Content: View, Header: View>: View {
             positionBelow = .bottom
         }
         
-        if((cardTopEdgeLocation - positionAbove.rawValue) < (positionBelow.rawValue - cardTopEdgeLocation)) {
+        // Determining wheather card is closest to top or bottom
+        if((offsetFromTopView - positionAbove.offsetFromTop()) < (positionBelow.offsetFromTop() - offsetFromTopView)) {
             closestPosition = positionAbove
         } else {
             closestPosition = positionBelow
         }
         
+        // Determining the card's position.
         if(verticalDirection > 0) {
             self.position = positionBelow
         } else if(verticalDirection < 0) {
