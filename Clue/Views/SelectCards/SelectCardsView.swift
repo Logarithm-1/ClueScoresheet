@@ -37,8 +37,6 @@ struct SelectCardsView: View {
                 Button {
                     do {
                         try game.addInitialCards(ids: selectedCardIds)
-                        print("added initial cards")
-                        isTapped = true
                     } catch {
                         print("Can not add initial cards")
                     }
@@ -51,7 +49,7 @@ struct SelectCardsView: View {
                 }.listRowBackground(Color.blue)
             }
             
-            NavigationLink(destination: MainGameView().environmentObject(game), isActive: $isTapped) {
+            NavigationLink(destination: MainGameView().environmentObject(game), isActive: $game.isPlaying) {
                 Spacer().frame(height: 0)
             }.listRowBackground(Color.clear).hidden()
         }

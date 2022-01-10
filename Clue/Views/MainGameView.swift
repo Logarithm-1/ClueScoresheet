@@ -22,7 +22,11 @@ struct MainGameView: View {
         //.navigationBarHidden(true)
         .navigationTitle("Turns")
         .toolbar {
-            Text("New Game")
+            Button {
+                game.resetGame()
+            } label: {
+                Text("New Game")
+            }
         }
     }
 }

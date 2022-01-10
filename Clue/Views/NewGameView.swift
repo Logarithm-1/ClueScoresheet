@@ -30,16 +30,19 @@ struct NewGameView: View {
                     NewGamePlayerNamesView(names: $game.playerNames)
                 }
                 
-                NavigationLink(destination: SelectCardsView().environmentObject(game)) {
+                NavigationLink(isActive: $game.selectingInitialCards) {
+                    SelectCardsView().environmentObject(game)
+                } label: {
                     HStack {
                         Spacer()
                         Text("Submit").bold().foregroundColor(Color.white)
                         Spacer()
                     }
                 }.listRowBackground(Color.blue)
+
             }.listStyle(InsetGroupedListStyle())
                 .navigationTitle("New Game")
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

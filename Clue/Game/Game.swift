@@ -14,7 +14,6 @@ import Foundation
 //TODO: Add Different view for iPad
 //TODO: Add Saving so can return to game, even if the app closes/crashes'
 //TODO: New Game, Change Player name optimation
-//TODO: Optimaze SlideOverView to be asscible through differnt applicatoins
 
 class Game: ObservableObject {
     @Published var cards: [Card] = [Card(name: "Colonel Mustard", imageName: "colonelMusard", cardType: .Suspect),
@@ -90,10 +89,14 @@ class Game: ObservableObject {
     @Published var mostGuiltyWeapond: UUID = UUID()
     @Published var mostGuiltyRoom: UUID = UUID()
     
+    @Published var selectingPlayers: Bool = true
+    @Published var selectingInitialCards: Bool = false
+    @Published var isPlaying: Bool = false
+    
     init() {
         self.playerNames = ["User", "Player 2", "Player 3"]
         
-        for i in 0..<cards.count {
+        for _ in 0..<cards.count {
             var playerIds: [Int] = [Int]()
             playerIds.append(user)
             
@@ -110,5 +113,35 @@ class Game: ObservableObject {
         }
         
         return false
+    }
+    
+    func resetGame() {
+        isPlaying = false
+        selectingInitialCards = false
+        
+        self.cards = [Card(name: "Colonel Mustard", imageName: "colonelMusard", cardType: .Suspect),
+                      Card(name: "Professor Plum", imageName: "professorPlum", cardType: .Suspect),
+                      Card(name: "Mr. Green", imageName: "mrGreen", cardType: .Suspect),
+                      Card(name: "Mrs. Peacock", imageName: "mrsPeacock", cardType: .Suspect),
+                      Card(name: "Miss scarlet", imageName: "missScarlet", cardType: .Suspect),
+                      Card(name: "Mrs. White", imageName: "mrsWhite", cardType: .Suspect),
+                      Card(name: "Knife", imageName: "knife", cardType: .Weapond),
+                      Card(name: "Candle Stick", imageName: "candleStick", cardType: .Weapond),
+                      Card(name: "Revolver", imageName: "revolver", cardType: .Weapond),
+                      Card(name: "Rope", imageName: "rope", cardType: .Weapond),
+                      Card(name: "Lead Pipe", imageName: "leadPipe", cardType: .Weapond),
+                      Card(name: "Wrench", imageName: "wrench", cardType: .Weapond),
+                      Card(name: "Hall", imageName: "hall", cardType: .Room),
+                      Card(name: "Lounge", imageName: "lounge", cardType: .Room),
+                      Card(name: "Dinning Room", imageName: "dinning", cardType: .Room),
+                      Card(name: "Kitchen", imageName: "kitchen", cardType: .Room),
+                      Card(name: "Ball Room", imageName: "ball", cardType: .Room),
+                      Card(name: "Conservatorty", imageName: "conservatory", cardType: .Room),
+                      Card(name: "Billiard Room", imageName: "billiard", cardType: .Room),
+                      Card(name: "Library", imageName: "library", cardType: .Room),
+                      Card(name: "Study", imageName: "study", cardType: .Room)]
+        self.turns = [Turn]()
+        self.playerNames = ["User", "Player 2", "Player 3"]
+        self.recalculateCards()
     }
 }

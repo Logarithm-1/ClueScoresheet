@@ -174,6 +174,7 @@ extension Game {
         }
         
         recalculateCards()
+        isPlaying = true
     }
     
     /// - Throws: ``Game.CardError``
